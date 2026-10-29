@@ -19,7 +19,7 @@
   <noscript><p>請啟用 JavaScript 後重新開啟系統。</p></noscript>
   <script>
     // 只需修改下行：使用「部署 → 管理部署」中的 /exec 網址。
-    const GAS_WEB_APP_URL = 'PASTE_YOUR_GAS_EXEC_URL_HERE';
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzPqQdZQlH7WxrQ4wkhYaW9Gyi5QsdI_yKfx3mJwyPfapAixM1wM7T1DMF5-lDHkwBG4g/exec';
     let valid=false;
     try { const url=new URL(GAS_WEB_APP_URL); valid=url.protocol==='https:' && url.hostname==='script.google.com' && /^\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(url.pathname) && !url.search && !url.hash; } catch(ignored) {}
     if(valid){document.getElementById('open-direct').href=GAS_WEB_APP_URL;document.getElementById('portal').src=GAS_WEB_APP_URL;document.getElementById('portal').hidden=false;document.getElementById('support').hidden=false;}
