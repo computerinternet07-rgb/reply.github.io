@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="115學年度準公共申請補件查詢、文件上傳及園所回覆。">
+  <title>115學年度準公共申請補件系統</title>
+  <style>
+    *{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden;background:#f4f6f3;color:#20342f;font-family:"Microsoft JhengHei",system-ui,sans-serif}
+    body{display:flex;flex-direction:column}.support{flex-shrink:0;padding:8px 16px;min-height:42px;background:#fff;border-top:4px solid #175b48;border-bottom:1px solid #cbd5ce;display:flex;gap:15px;align-items:center;justify-content:space-between;font-size:14px;line-height:1.6}.support span{color:#52675f}.support a{color:#175b48;min-height:32px;display:inline-flex;align-items:center;text-underline-offset:4px}.support a:focus-visible{outline:3px solid #b87914;outline-offset:3px}iframe{display:block;border:0;width:100%;flex:1;min-height:0;background:#f4f6f3}.setup{padding:32px 22px;max-width:720px;margin:30px auto;font-size:18px;line-height:1.9}.setup h1{font-size:26px}.setup code{overflow-wrap:anywhere}[hidden]{display:none!important}
+    @supports(height:100dvh){html,body{height:100dvh}}@media(max-width:520px){.support{font-size:13px;padding:6px 12px}.support span{max-width:52%}}
+  </style>
+</head>
+<body>
+  <div id="support" class="support" hidden><span>準公共申請補件服務</span><a id="open-direct" target="_blank" rel="noopener noreferrer">無法顯示？另開系統</a></div>
+  <div class="setup" id="setup" hidden><h1>請先設定系統入口</h1><p>請編輯這份 index.html，將 <code>GAS_WEB_APP_URL</code> 改成正式部署的 GAS 網頁應用程式網址（結尾為 /exec）。</p></div>
+  <iframe id="portal" title="準公共申請補件查詢與回覆" referrerpolicy="no-referrer" hidden></iframe>
+  <noscript><p>請啟用 JavaScript 後重新開啟系統。</p></noscript>
+  <script>
+    // 只需修改下行：使用「部署 → 管理部署」中的 /exec 網址。
+    const GAS_WEB_APP_URL = 'PASTE_YOUR_GAS_EXEC_URL_HERE';
+    let valid=false;
+    try { const url=new URL(GAS_WEB_APP_URL); valid=url.protocol==='https:' && url.hostname==='script.google.com' && /^\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(url.pathname) && !url.search && !url.hash; } catch(ignored) {}
+    if(valid){document.getElementById('open-direct').href=GAS_WEB_APP_URL;document.getElementById('portal').src=GAS_WEB_APP_URL;document.getElementById('portal').hidden=false;document.getElementById('support').hidden=false;}
+    else{document.getElementById('setup').hidden=false;}
+  </script>
+</body>
+</html>
